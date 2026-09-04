@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train Model",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/train.py",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Predict — Validation",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/predict.py",
+            "args": [
+                "--input", "data/validation.csv",
+                "--output", "validation_predictions.csv"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Predict — December",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/predict.py",
+            "args": [
+                "--input", "data/december-chart-inputs.csv",
+                "--output", "data/december-chart-inputs.csv",
+                "--december"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Run Scorer",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scores.py",
+            "args": [
+                "--predictions", "validation_predictions.csv",
+                "--december-predictions", "data/december-chart-inputs.csv"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
